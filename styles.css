@@ -1,0 +1,381 @@
+/* Estilos generales */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body.modo-claro {
+    background-color: #bcb49a;
+}
+
+body.modo-oscuro {
+    background-color: #032e36;
+    color: #ecf0f1;
+}
+
+
+
+
+/* Contenedores*/
+
+.login-contenedor {
+    background-color:rgba(202, 186, 128, 0.535);
+    width: 100vh; 
+    height: 95vh; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #9b9257;
+    padding: 10px; 
+    align-items: center;
+    margin: 10px auto;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+}
+.login-contenedor.modo-oscuro {
+    background-color: #059ea9;
+    color: #f1ecec;
+    box-shadow: 0 2px 4px #026f7d;
+}
+
+.coffe {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 190px;
+  height: 210px;
+}
+.coffe:hover {
+  transform: scale(1.1); 
+}
+
+.options-contenedor {
+    position: absolute;
+    bottom: 10px;  
+    right: 85px;
+    width: 360px; 
+    background-color: rgba(202, 186, 128, 0.535);
+    padding: 20px; 
+    box-shadow: 0 4px 6px #504502;
+    border-radius: 10px;
+    transition: all 0.3s ease;  
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    }
+
+    
+.options-contenedor.modo-oscuro {
+    background-color: #059ea9;
+    color: #f1ecec;
+    box-shadow: 0 2px 4px #026f7d;
+}
+
+.cifras-contenedor {
+    background-color: rgba(202, 186, 128, 0.535);
+    border-radius: 10px;
+    text-align: center;
+    width: 60vh; 
+    height: 50vh; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #504502;
+    padding: 5px; 
+    align-items: center;
+    margin: 10px auto;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+}
+.cifras-contenedor.modo-oscuro {
+    background-color: #059ea9;
+    color: #f1ecec;
+    box-shadow: 0 2px 4px #026f7d;
+}
+.bank-contenedor {
+    position: absolute;
+    bottom: 120px;  
+    right: 100px;
+    width: 360px; 
+    padding: 50px; 
+    z-index: 10;
+}
+.bank {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 190px;
+  height: 210px;
+}
+.bank:hover {
+  transform: scale(1.1); 
+}
+
+
+
+/*Textos en login contenedor*/
+
+.login-contenedor .fw-bold {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.login-contenedor.modo-oscuro .fw-bold {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.login-contenedor.modo-oscuro p {
+    font-size: 1rem;
+    color: #15595e;
+}
+.login-contenedor.modo-oscuro h1 {
+    font-size: 60px;
+    color: #032e36; 
+    font-weight: bold;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.login-contenedor.modo-oscuro h1:hover {
+    transform: scale(1.1); 
+}
+
+.login-contenedor h1 {
+    font-size: 60px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    color: #948b6c; 
+    font-weight: bold;
+}
+.login-contenedor.modo-claro h1:hover {
+    transform: scale(1.1); 
+}
+
+/*Textos en cifras contenedor*/
+
+
+.cifras-contenedor h1.text-center.mb-3 {
+    color: #80650c;
+    font-size: 40px;
+    font-weight: bold;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}   
+.cifras-contenedor.modo-oscuro h1.text-center.mb-3 {
+    color: #04363c;
+    font-size: 40px;
+    font-weight: bold;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}  
+.cifras-contenedor.modo-oscuro h1:hover {
+    transform: scale(1.1); 
+}
+.cifras-contenedor.modo-claro h1:hover {
+    transform: scale(1.1); 
+}
+
+.cifras-contenedor.modo-claro p {
+    font-size: 12px;
+    color: #4d3c03;
+}
+.cifras-contenedor.modo-oscuro p {
+    font-size: 12px;
+    color: #beeaee;
+}
+.cifras-contenedor p.fw-bold {
+    font-size: 20px;
+    margin-bottom: 0px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/*Textos en options contenedor*/
+
+.options-contenedor h1.text-center.mb-3 {
+    color: #aa880c;
+    font-size: 40px;
+    font-weight: bold;
+}   
+.options-contenedor.modo-oscuro h1.text-center.mb-3 {
+    color: #04363c;
+    font-size: 40px;
+    font-weight: bold;
+}  
+.options-contenedor.modo-claro p {
+    font-size: 12px;
+    color: #816d2b;
+    
+}
+.options-contenedor.modo-oscuro p {
+    font-size: 12px;
+    color: #beeaee;
+}
+.options-contenedor p.fw-bold {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+
+/*Textos en bank contenedor*/
+
+.options-contenedor p {
+    font-size: 12px;
+    color: #433400; 
+}
+
+.options-contenedor.modo-oscuro p {
+    font-size: 12px;
+    color: #beeaee; 
+}
+
+
+
+
+/* Formulario */
+.form-control {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-bottom: -10px;
+}
+
+
+
+/*Botones en Modo Claro*/
+.btn {
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    font-size: 12px; 
+    margin-bottom: -10px; 
+}
+.btn-principal.modo-claro {
+    background-color: #077b6f;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 15px 70px;
+}
+
+.btn-principal.modo-claro:hover {
+    background-color: #11524b;
+    transform: translateY(-2px);
+}
+
+.btn-secundario.modo-claro {
+    background-color: #9b8637;
+    color: #352f0eea;
+    font-size: 12px;
+    padding: 3px 20px;
+    margin-bottom: 0px;
+    
+}
+
+.btn-secundario.modo-claro:hover {
+    background-color: #a59b11;
+    transform: translateY(-2px);
+}
+
+/*Botones en Modo Oscuro*/
+
+.btn-principal.modo-oscuro {
+    background-color: #cdaa2c;
+    color: rgb(82, 63, 26);
+    font-size: 16px;
+    padding: 15px 70px;
+}
+
+.btn-principal.modo-oscuro:hover {
+    background-color: #ba9a2a;
+    transform: translateY(-2px);
+}
+
+.btn-secundario.modo-oscuro {
+    background-color: #04857e;
+    color: #fefefeea;
+    font-size: 12px;
+    padding: 3px 0px;
+    margin-bottom: 0px;
+    
+}
+
+.btn-secundario.modo-oscuro:hover {
+    background-color: #14b19c;
+    transform: translateY(-2px);
+}
+
+
+
+/*Boton Cambiar Modos*/
+.mode-toggle-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.mode-toggle-floating.modo-claro:hover {
+    background-color: #1abc9c;
+    transform: translateY(-2px);
+}
+.mode-toggle-floating.modo-oscuro:hover {
+    background-color: #89803f;
+    transform: translateY(-2px);
+}
+.mode-toggle-floating.modo-claro {
+    background-color: rgba(202, 186, 128, 0.535);
+}
+
+.mode-toggle-floating.modo-oscuro {
+    background-color: #1abc9c;
+}
+
+
+
+
+/*Responsive Design*/
+@media (max-width: 880px) {
+
+.cifras-contenedor {
+    display: block;
+}
+.bank-contenedor {
+    display: none
+}
+.options-contenedor {
+    
+    width: 2000px;
+    padding: 5px;
+
+}
+}
+
+@media (max-width: 750px) {
+.cifras-contenedor {
+display: none;
+}
+.bank-contenedor {
+    display: none;
+}
+.options-contenedor {
+    position: static;
+    width: 83%;
+    padding: 10px;
+    align-items: center;
+    margin: 0 auto;
+}
+}
