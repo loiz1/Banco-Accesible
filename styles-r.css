@@ -1,0 +1,816 @@
+/* === VARIABLES CSS === */
+:root {
+    --color-fondo-claro: #bcb49a;
+    --color-contenedor-claro: rgba(202, 186, 128, 0.535);
+    --color-sombra-claro: #9b9257;
+    --color-texto-claro-h1: #948b6c;
+    --color-boton-principal-claro: #d0b13f;
+    --color-boton-secundario-claro: #9b8637;
+    --color-fondo-oscuro: #032e36;
+    --color-contenedor-oscuro: #059ea9;
+    --color-sombra-oscuro: #026f7d;
+    --color-texto-oscuro: #ecf0f1;
+    --color-texto-oscuro-h1: #032e36;
+    --color-boton-principal-oscuro: #cdaa2c;
+    --color-boton-secundario-oscuro: #04857e;
+}
+
+/* === ESTILOS GENERALES === */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body.modo-claro {
+    background-color: var(--color-fondo-claro);
+}
+
+body.modo-oscuro {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
+}
+
+/* === SECCIONES PRINCIPALES === */
+.login-section,
+.movimientos-section {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* === LOGIN CONTENEDOR === */
+.login-contenedor {
+    background-color: var(--color-contenedor-claro);
+    min-height: 90vh;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+body.modo-oscuro .login-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+.login-contenedor h1 {
+    color: #80650c;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+body.modo-oscuro .login-contenedor h1 {
+    color: #04363c;
+}
+
+.login-contenedor h1:hover {
+    transform: scale(1.05);
+}
+
+/* === IMÁGENES EN LOGIN === */
+.coffe1 {
+    transition: transform 0.3s ease;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.coffe1:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* === MOVIMIENTOS CONTENEDOR === */
+.movimientos-contenedor {
+    background-color: var(--color-contenedor-claro);
+    min-height: 50vh;
+    padding: 10px 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    transition: all 0.3s ease;
+    position: relative;
+    top: -10px;
+}
+
+body.modo-oscuro .movimientos-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+.movimientos-contenedor h1 {
+    color: #80650c;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+body.modo-oscuro .movimientos-contenedor h1 {
+    color: #04363c;
+}
+
+.movimientos-contenedor h1:hover {
+    transform: scale(1.05);
+}
+
+.movimientos-contenedor .row {
+    margin-bottom: 20px;
+}
+
+.movimientos-contenedor .col-6 {
+    margin-bottom: 15px;
+}
+
+.movimientos-contenedor p {
+    margin-bottom: 5px;
+    font-size: 0.875rem;
+}
+
+.movimientos-contenedor .fw-bold {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.movimientos-contenedor p:not(.fw-bold) {
+    color: #4d3c03;
+}
+
+body.modo-oscuro .movimientos-contenedor p:not(.fw-bold) {
+    color: #beeaee;
+}
+
+/* === IMAGEN DE DATOS === */
+.datos-imagen {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 120px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.datos-imagen:hover {
+    transform: scale(1.1);
+}
+
+/* === OPTIONS CONTENEDOR === */
+.options-contenedor {
+    background-color: var(--color-contenedor-claro);
+    padding: 25px 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    min-height: 35vh;
+}
+
+body.modo-oscuro .options-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+.options-contenedor h1 {
+    color: #aa880c;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+body.modo-oscuro .options-contenedor h1 {
+    color: #04363c;
+}
+
+.options-contenedor p {
+    font-size: 0.6rem;
+    color: #433400;
+    margin: 15px 0 10px 0;
+}
+
+body.modo-oscuro .options-contenedor p {
+    color: #beeaee;
+}
+
+/* === IMAGEN DE CUENTA === */
+.cuenta-imagen {
+    position: absolute;
+    width: 135px;
+    height: auto;
+    transition: transform 0.3s ease;
+    bottom: 170px;
+    right: -5px;
+    z-index: 1;
+}
+
+.cuenta-imagen:hover {
+    transform: scale(1.1);
+}
+
+/* === FORMULARIOS DESPLEGABLES === */
+.hidden-form {
+    display: none;
+    position: absolute;
+    background-color: rgba(202, 186, 128, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    width: 280px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    border: 1px solid var(--color-sombra-claro);
+}
+
+body.modo-oscuro .hidden-form {
+    background-color: rgba(5, 158, 169, 0.95);
+    border: 1px solid var(--color-sombra-oscuro);
+}
+
+.hidden-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hidden-form label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 2px;
+}
+
+.hidden-form input,
+.hidden-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.hidden-form input:focus,
+.hidden-form select:focus {
+    outline: none;
+    border-color: var(--color-boton-principal-claro);
+    box-shadow: 0 0 3px var(--color-boton-principal-claro);
+}
+
+/* === BOTONES === */
+.button-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.75rem;
+    padding: 8px 12px;
+    min-height: 30px;
+    min-width: 100px;
+    margin: 5px 0;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Botón Secundario - Modo Claro */
+.btn-secundario {
+    background-color: var(--color-boton-principal-oscuro);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 130px;
+    min-height: 35px;
+    margin: 10px 0;
+}
+
+.btn-secundario:hover {
+    background-color: #e2d707;
+    transform: translateY(-2px);
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.btn-guardar:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.btn-cancelar:hover {
+    background-color: #da190b;
+    transform: translateY(-1px);
+}
+
+/* Botón Secundario - Modo Oscuro */
+body.modo-oscuro .btn-secundario {
+    background-color: var(--color-boton-secundario-oscuro);
+    color: #fefefeea;
+}
+
+body.modo-oscuro .btn-secundario:hover {
+    background-color: #14b19c;
+}
+
+body.modo-oscuro .btn-guardar {
+    background-color: #3d8b40;
+}
+
+body.modo-oscuro .btn-guardar:hover {
+    background-color: #367d39;
+}
+
+body.modo-oscuro .btn-cancelar {
+    background-color: #d32f2f;
+}
+
+body.modo-oscuro .btn-cancelar:hover {
+    background-color: #b71c1c;
+}
+
+/* === BOTÓN DE CAMBIO DE MODO === */
+.mode-toggle-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+.mode-toggle-floating.modo-claro {
+    background-color: var(--color-contenedor-claro);
+    color: #333;
+}
+
+.mode-toggle-floating.modo-oscuro {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.mode-toggle-floating:hover {
+    transform: translateY(-2px);
+}
+
+.mode-toggle-floating.modo-claro:hover {
+    background-color: #1abc9c;
+}
+
+.mode-toggle-floating.modo-oscuro:hover {
+    background-color: #89803f;
+}
+
+/* === MENSAJE DE BIENVENIDA Y SALDO === */
+.user-info {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.user-info p {
+    margin: 5px 0;
+}
+
+#username-display, #balance-display, #account-display {
+    font-weight: bold;
+}
+
+/* === ÚLTIMOS MOVIMIENTOS DETALLADOS === */
+.movimientos-detalles {
+    background-color: var(--color-contenedor-claro);
+    padding: 1px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    margin: 20px;
+    min-height: 120px;
+}
+
+body.modo-oscuro .movimientos-detalles {
+    background-color: var(--color-contenedor-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+.movimientos-detalles h2 {
+    color: #80650c;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+body.modo-oscuro .movimientos-detalles h2 {
+    color: #04363c;
+}
+
+.list-group-item {
+    border: none;
+    padding: 1px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item.bg-transparent {
+    background-color: transparent;
+}
+
+.badge.bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* === FORMULARIO DE RECARGAS Y RETIROS === */
+.recarga-retiros {
+    position: absolute;
+    background-color: var(--color-contenedor-claro);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    margin: 20px;
+    min-height: 200px;
+    width: 50%;
+    top: 500px;
+}
+
+body.modo-oscuro .recarga-retiros {
+    background-color: var(--color-contenedor-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+.recarga-retiros h2 {
+    color: #80650c;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+body.modo-oscuro .recarga-retiros h2 {
+    color: #04363c;
+}
+
+#transaccion-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#transaccion-form input,
+#transaccion-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+#transaccion-form button {
+    margin-top: 10px;
+}
+
+/* === EXTRACTO MODAL === */
+.extracto-info h6 {
+    margin: 8px 0;
+}
+
+.extracto-info hr {
+    margin: 10px 0;
+}
+
+/* Estilos para el contenido del extracto */
+.extracto-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.extracto-header h3 {
+    color: #80650c;
+    margin-bottom: 5px;
+}
+
+.extracto-summary {
+    background-color: rgba(202, 186, 128, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+body.modo-oscuro .extracto-summary {
+    background-color: rgba(5, 158, 169, 0.3);
+}
+
+.extracto-movimientos {
+    margin-top: 20px;
+}
+
+.extracto-movimientos h4 {
+    color: #80650c;
+    border-bottom: 1px solid #9b9257;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+body.modo-oscuro .extracto-movimientos h4 {
+    color: #04363c;
+    border-bottom: 1px solid #026f7d;
+}
+
+.movimiento-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+body.modo-oscuro .movimiento-item {
+    border-bottom: 1px solid #026f7d;
+}
+
+.movimiento-item:last-child {
+    border-bottom: none;
+}
+
+.movimiento-tipo {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.movimiento-tipo.ingreso {
+    background-color: #28a745;
+}
+
+.movimiento-tipo.retiro {
+    background-color: #dc3545;
+}
+
+.movimiento-fecha {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+body.modo-oscuro .movimiento-fecha {
+    color: #beeaee;
+}
+
+.movimiento-monto {
+    font-weight: bold;
+}
+
+.movimiento-monto.ingreso {
+    color: #28a745;
+}
+
+.movimiento-monto.retiro {
+    color: #dc3545;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1268px) {
+    .datos-imagen {
+        position: absolute;
+        width: 100px;
+        margin: 15px auto 0;
+        display: block;
+        right: -20px;
+        bottom: 190px;
+    }
+    
+    .hidden-form {
+        width: 250px;
+    }
+    
+    .btn-secundario {
+        min-width: 90px;
+    }
+    
+    .cuenta-imagen {
+        width: 80px;
+        margin: 15px auto 0;
+        display: block;
+        right: -20px;
+        bottom: 190px;
+    }
+}
+
+@media (max-width: 968px) {
+    .datos-imagen {
+        position: absolute;
+        width: 100px;
+        margin: 15px auto 0;
+        display: block;
+        right: -20px;
+        bottom: 190px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-section,
+    .movimientos-section {
+        min-height: auto;
+    }
+    
+    .login-contenedor {
+        min-height: 50vh;
+        padding: 40px 20px;
+    }
+    
+    .movimientos-contenedor {
+        position: relative;
+        min-height: auto;
+        margin: 40px;
+        padding: 20px 15px;
+    }
+    
+    .options-contenedor {
+        margin: 40px;
+        padding: 20px 15px;
+        min-height: 40vh;
+    }
+    
+    .movimientos-contenedor h1,
+    .options-contenedor h1 {
+        font-size: 1.5rem;
+    }
+    
+    .datos-imagen {
+        position: absolute;
+        width: 80px;
+        margin: 15px auto 0;
+        display: block;
+        right: -20px;
+        bottom: 190px;
+    }
+    
+    .cuenta-imagen {
+        width: 80px;
+        margin: 15px auto 0;
+        display: block;
+        right: -20px;
+        bottom: 190px;
+    }
+    
+    .coffe1 {
+        width: 100px;
+        height: 100px;
+        top: 10px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .hidden-form {
+        position: relative;
+        width: 90%;
+        top: 10px;
+        left: 0;
+        transform: none;
+        margin: 10px auto;
+    }
+    
+    .cuenta-imagen {
+        width: 60px;
+        bottom: 150px;
+        right: -15px;
+    }
+    
+    .recarga-retiros {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+    
+    .movimientos-detalles {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .movimientos-contenedor .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .movimientos-contenedor p:not(.fw-bold) {
+        font-size: 0.75rem;
+    }
+    
+    .movimientos-contenedor .fw-bold {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        min-width: 100px;
+    }
+    
+    .btn-secundario {
+        min-width: 120px;
+        min-height: 32px;
+        font-size: 0.75rem;
+    }
+    
+    .hidden-form {
+        width: 95%;
+        padding: 12px;
+    }
+    
+    .hidden-form input {
+        font-size: 0.7rem;
+        padding: 6px;
+    }
+    
+    .btn-guardar,
+    .btn-cancelar {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        min-width: 70px;
+    }
+    
+    .cuenta-imagen {
+        width: 50px;
+        bottom: 130px;
+        right: -10px;
+    }
+    
+    .user-info {
+        font-size: 0.9rem;
+    }
+    
+    .recarga-retiros h2,
+    .movimientos-detalles h2 {
+        font-size: 1.25rem;
+    }
+}

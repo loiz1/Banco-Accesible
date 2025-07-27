@@ -15,8 +15,10 @@ function toggleMode() {
     body.classList.toggle('modo-claro');
 
     // Toggle container class
-    loginContainer.classList.toggle('modo-oscuro');
-    loginContainer.classList.toggle('modo-claro');
+    if (loginContainer) {
+        loginContainer.classList.toggle('modo-oscuro');
+        loginContainer.classList.toggle('modo-claro');
+    }
 
     // Toggle form controls
     formControls.forEach(control => {
@@ -36,8 +38,10 @@ function toggleMode() {
     });
 
     // Toggle mode button
-    btnModo.classList.toggle('modo-oscuro');
-    btnModo.classList.toggle('modo-claro');
+    if (btnModo) {
+        btnModo.classList.toggle('modo-oscuro');
+        btnModo.classList.toggle('modo-claro');
+    }
 
     // Toggle headings
     headings.forEach(heading => {
@@ -59,10 +63,10 @@ function toggleMode() {
 
     // Update button text and save preference
     if (body.classList.contains('modo-oscuro')) {
-        btnModo.textContent = '🔦';
+        if (btnModo) btnModo.textContent = '🔦';
         localStorage.setItem('theme', 'oscuro');
     } else {
-        btnModo.textContent = '🌚';
+        if (btnModo) btnModo.textContent = '🌚';
         localStorage.setItem('theme', 'claro');
     }
 }
@@ -84,8 +88,11 @@ function applySavedTheme() {
     if (savedTheme === 'oscuro') {
         body.classList.add('modo-oscuro');
         body.classList.remove('modo-claro');
-        loginContainer.classList.add('modo-oscuro');
-        loginContainer.classList.remove('modo-claro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-oscuro');
+            loginContainer.classList.remove('modo-claro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-oscuro');
@@ -102,8 +109,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-claro');
         });
 
-        btnModo.classList.add('modo-oscuro');
-        btnModo.classList.remove('modo-claro');
+        if (btnModo) {
+            btnModo.classList.add('modo-oscuro');
+            btnModo.classList.remove('modo-claro');
+            btnModo.textContent = '🔦';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-oscuro');
@@ -120,12 +130,14 @@ function applySavedTheme() {
             link.classList.remove('modo-claro');
         });
 
-        btnModo.textContent = '🔦';
     } else {
         body.classList.add('modo-claro');
         body.classList.remove('modo-oscuro');
-        loginContainer.classList.add('modo-claro');
-        loginContainer.classList.remove('modo-oscuro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-claro');
+            loginContainer.classList.remove('modo-oscuro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-claro');
@@ -142,8 +154,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-oscuro');
         });
 
-        btnModo.classList.add('modo-claro');
-        btnModo.classList.remove('modo-oscuro');
+        if (btnModo) {
+            btnModo.classList.add('modo-claro');
+            btnModo.classList.remove('modo-oscuro');
+            btnModo.textContent = '🌚';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-claro');
@@ -159,8 +174,6 @@ function applySavedTheme() {
             link.classList.add('modo-claro');
             link.classList.remove('modo-oscuro');
         });
-
-        btnModo.textContent = '🌚';
     }
 }
 
@@ -180,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const identification = document.getElementById('identification').value;
+            // Eliminado el campo de identificación
             const names = document.getElementById('names').value;
             const email = document.getElementById('email').value;
             const username = document.getElementById('username').value;
@@ -193,33 +206,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            if (password.length < 6) {
-                alert('La contraseña debe tener al menos 6 caracteres');
+            if (password.length < 3) {
+                alert('La contraseña debe tener al menos 3 caracteres');
                 return;
             }
             
             // Obtener usuarios existentes
             let users = JSON.parse(localStorage.getItem('users')) || [];
             
-            // Verificar si el usuario ya existe
+            // Verificar si el usuario ya existe (solo por username o email)
             const existingUser = users.find(user => 
-                user.identification === identification || 
                 user.username === username || 
                 user.email === email
             );
             
             if (existingUser) {
-                alert('Ya existe un usuario con esa identificación, nombre de usuario o correo');
+                alert('Ya existe un usuario con ese nombre de usuario o correo');
                 return;
             }
             
-            // Crear nuevo usuario
+            // Crear nuevo usuario (sin identificación)
             const newUser = {
-                identification,
+                id: Date.now(), // ID único para el usuario
                 names,
                 email,
                 username,
-                password
+                password,
+                balance: 0, // Inicializar saldo en 0 para nuevos usuarios
+                accountNumber: Math.floor(100000 + Math.random() * 900000).toString() // Número de cuenta aleatorio
             };
             
             // Agregar a la lista de usuarios

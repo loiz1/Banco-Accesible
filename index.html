@@ -3,12 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Bancafé</title>
-    <!-- Enlazar Bootstrap CSS -->
+    <title>Bienvenido a Bancafé</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-r.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body class="modo-claro">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Sección de Login -->
+            <div class="col-md-6 login-section">
+                <div class="login-contenedor">
+                    <img src="/img/cafe2.png" alt="LogoCafe" class="coffe1" width="150" height="150">
+                    <h1 class="text-center mb-3">Bancafé</h1>
+                    
+                    <!-- Mensaje de bienvenida y saldo -->
+                    <div class="user-info text-center">
+                        <p class="fw-bold">Hola, <span id="username-display">[Nombre del Usuario]</span>!</p>
+                        <p>Cuenta: <span id="account-display">#XXXXXX</span></p>
+                        <p>Tu saldo actual es: <span id="balance-display">$0</span></p>
+                    </div>
+                    
+                    <!-- Botón para abrir formulario de transacción -->
+                    <div class="text-center mt-4">
+                        <button id="btn-realizar-transaccion" class="btn btn-secundario">Realizar Transacción</button>
+                        <div id="form-transaccion" class="hidden-form">
+                            <form id="transaccion-form">
+                                <div class="mb-3">
+                                    <label for="tipo-transaccion" class="form-label">Tipo:</label>
+                                    <select id="tipo-transaccion" class="form-select form-select-sm" required>
+                                        <option value="ingreso">Ingreso</option>
+                                        <option value="retiro">Retiro</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="monto" class="form-label">Monto:</label>
+                                    <input type="number" id="monto" name="monto" class="form-control form-control-sm" placeholder="Ingresa el monto" step="0.01" min="0.01" required>
+                                </div>
+                                <button type="submit" class="btn btn-guardar w-100 mb-2">Realizar</button>
+                                <button type="button" class="btn btn-cancelar w-100" onclick="closeForm('form-transaccion')">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Movimientos -->
+            <div class="col-md-6 movimientos-section">
+                <!-- Últimos Movimientos Detallados -->
+                <div class="movimientos-detalles">
+                    <h2 class="text-center mb-3">Historial de Movimientos</h2>
+                    <ul id="movimientos-lista" class="list-group list-group-flush">
+                        <!-- Los movimientos se cargarán aquí dinámicamente -->
+                        <li class="list-group-item bg-transparent text-center text-muted">
+                            No hay movimientos registrados.
+                        </li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-sm btn-secundario" id="btn-ver-extracto" data-bs-toggle="modal" data-bs-target="#extractoModal">Ver Extracto Completo</button>
+                    </div>
+                    <img src="/img/datos1.png" alt="Logo Datos" class="datos-imagen">
+                </div>
+
+                <div class="options-contenedor">
+                    <h1 class="text-center mb-3">Modifica tus Datos</h1>
+                    <div class="button-group">
+                        <button id="btn-change-user" class="btn btn-secundario">Cambiar Usuario</button>
+                        <div id="form-change-user" class="hidden-form">
+                            <form id="form-change-user-data">
+                                <label for="new-username" class="form-label">Nuevo Usuario:</label>
+                                <input type="text" id="new-username" name="new-username" class="form-control form-control-sm mb-2" placeholder="Ingresa tu nuevo usuario" required>
+                                <button type="submit" class="btn btn-guardar w-100 mb-2">Guardar</button>
+                                <button type="button" class="btn btn-cancelar w-100" onclick="closeForm('form-change-user')">Cancelar</button>
+                            </form>
+                        </div>
+                        
+                        <button id="btn-change-password" class="btn btn-secundario">Cambiar Contraseña</button>
+                        <div id="form-change-password" class="hidden-form">
+                            <form id="form-change-password-data">
+                                <label for="current-password" class="form-label">Contraseña Actual:</label>
+                                <input type="password" id="current-password" name="current-password" class="form-control form-control-sm mb-2" placeholder="Ingresa tu contraseña actual" required>
+                                <label for="new-password" class="form-label">Nueva Contraseña:</label>
+                                <input type="password" id="new-password" name="new-password" class="form-control form-control-sm mb-2" placeholder="Ingresa tu nueva contraseña" required>
+                                <button type="submit" class="btn btn-guardar w-100 mb-2">Guardar</button>
+                                <button type="button" class="btn btn-cancelar w-100" onclick="closeForm('form-change-password')">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <button id="btn-logout" class="btn btn-secundario mt-3">Cerrar Sesión</button>
+                </div>
+                <img src="/img/alert1.png" alt="Logo Cuenta" class="cuenta-imagen">
+            </div>
+        </div>
+    </div>
     
+    <!-- Modal para Extracto Completo -->
+    <div class="modal fade" id="extractoModal" tabindex="-1" aria-labelledby="extractoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="extractoModalLabel">Extracto Completo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="extracto-contenido">
+                        <!-- El contenido del extracto se cargará aquí -->
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Generando extracto...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="btn-descargar-pdf">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="toggleModeButton" class="mode-toggle-floating">🌚</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

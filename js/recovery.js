@@ -10,17 +10,23 @@ function toggleMode() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
+    // Toggle body class
     body.classList.toggle('modo-oscuro');
     body.classList.toggle('modo-claro');
 
-    loginContainer.classList.toggle('modo-oscuro');
-    loginContainer.classList.toggle('modo-claro');
+    // Toggle container class
+    if (loginContainer) {
+        loginContainer.classList.toggle('modo-oscuro');
+        loginContainer.classList.toggle('modo-claro');
+    }
 
+    // Toggle form controls
     formControls.forEach(control => {
         control.classList.toggle('modo-oscuro');
         control.classList.toggle('modo-claro');
     });
 
+    // Toggle buttons
     if (btnPrincipal) {
         btnPrincipal.classList.toggle('modo-oscuro');
         btnPrincipal.classList.toggle('modo-claro');
@@ -31,29 +37,36 @@ function toggleMode() {
         btn.classList.toggle('modo-claro');
     });
 
-    btnModo.classList.toggle('modo-oscuro');
-    btnModo.classList.toggle('modo-claro');
+    // Toggle mode button
+    if (btnModo) {
+        btnModo.classList.toggle('modo-oscuro');
+        btnModo.classList.toggle('modo-claro');
+    }
 
+    // Toggle headings
     headings.forEach(heading => {
         heading.classList.toggle('modo-oscuro');
         heading.classList.toggle('modo-claro');
     });
 
+    // Toggle paragraphs
     paragraphs.forEach(paragraph => {
         paragraph.classList.toggle('modo-oscuro');
         paragraph.classList.toggle('modo-claro');
     });
 
+    // Toggle links
     links.forEach(link => {
         link.classList.toggle('modo-oscuro');
         link.classList.toggle('modo-claro');
     });
 
+    // Update button text and save preference
     if (body.classList.contains('modo-oscuro')) {
-        btnModo.textContent = '🔦';
+        if (btnModo) btnModo.textContent = '🔦';
         localStorage.setItem('theme', 'oscuro');
     } else {
-        btnModo.textContent = '🌚';
+        if (btnModo) btnModo.textContent = '🌚';
         localStorage.setItem('theme', 'claro');
     }
 }
@@ -71,11 +84,15 @@ function applySavedTheme() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
+    // Apply saved theme
     if (savedTheme === 'oscuro') {
         body.classList.add('modo-oscuro');
         body.classList.remove('modo-claro');
-        loginContainer.classList.add('modo-oscuro');
-        loginContainer.classList.remove('modo-claro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-oscuro');
+            loginContainer.classList.remove('modo-claro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-oscuro');
@@ -92,8 +109,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-claro');
         });
 
-        btnModo.classList.add('modo-oscuro');
-        btnModo.classList.remove('modo-claro');
+        if (btnModo) {
+            btnModo.classList.add('modo-oscuro');
+            btnModo.classList.remove('modo-claro');
+            btnModo.textContent = '🔦';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-oscuro');
@@ -110,12 +130,14 @@ function applySavedTheme() {
             link.classList.remove('modo-claro');
         });
 
-        btnModo.textContent = '🔦';
     } else {
         body.classList.add('modo-claro');
         body.classList.remove('modo-oscuro');
-        loginContainer.classList.add('modo-claro');
-        loginContainer.classList.remove('modo-oscuro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-claro');
+            loginContainer.classList.remove('modo-oscuro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-claro');
@@ -132,8 +154,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-oscuro');
         });
 
-        btnModo.classList.add('modo-claro');
-        btnModo.classList.remove('modo-oscuro');
+        if (btnModo) {
+            btnModo.classList.add('modo-claro');
+            btnModo.classList.remove('modo-oscuro');
+            btnModo.textContent = '🌚';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-claro');
@@ -149,11 +174,10 @@ function applySavedTheme() {
             link.classList.add('modo-claro');
             link.classList.remove('modo-oscuro');
         });
-
-        btnModo.textContent = '🌚';
     }
 }
 
+// Funcionalidad de recuperación
 document.addEventListener('DOMContentLoaded', function() {
     const recoveryForm = document.getElementById('recoveryForm');
     const toggleButton = document.getElementById('toggleModeButton');
@@ -170,29 +194,50 @@ document.addEventListener('DOMContentLoaded', function() {
         recoveryForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const identification = document.getElementById('recoveryIdentification').value;
-            const email = document.getElementById('recoveryEmail').value;
+            // Usar los IDs correctos del HTML
+            const names = document.getElementById('recoveryNames').value.trim();
+            const email = document.getElementById('recoveryEmail').value.trim();
+            
+            // Validaciones
+            if (!names || !email) {
+                if (recoveryResult) {
+                    recoveryResult.className = 'alert alert-danger';
+                    recoveryResult.textContent = 'Por favor complete todos los campos';
+                    recoveryResult.style.display = 'block';
+                }
+                return;
+            }
             
             // Obtener usuarios
             let users = JSON.parse(localStorage.getItem('users')) || [];
             
-            // Buscar usuario
+            // Buscar usuario por username y email
             const user = users.find(u => 
-                u.identification === identification && u.email === email
+                u.names === names && u.email === email
             );
             
             if (user) {
-                recoveryResult.className = 'alert alert-success';
-                recoveryResult.innerHTML = `
-                    <strong>Usuario encontrado:</strong><br>
-                    Nombre de usuario: ${user.username}<br>
-                    Contraseña: ${user.password}
-                `;
-                recoveryResult.style.display = 'block';
+                if (recoveryResult) {
+                    recoveryResult.className = 'alert alert-success';
+                    recoveryResult.innerHTML = `
+                        <strong>Usuario encontrado:</strong><br>
+                        Nombre de usuario: ${user.username}<br>
+                    `;
+                    // Mostrar contraseña solo si el usuario confirma
+                    const showPassword = confirm("¿Desea ver su contraseña?");
+                    if (showPassword) {
+                        recoveryResult.innerHTML += `Contraseña: ${user.password}`;
+                    } else {
+                        recoveryResult.innerHTML += "Contraseña recuperada. Revise su correo electrónico.";
+                    }
+                    recoveryResult.style.display = 'block';
+                }
             } else {
-                recoveryResult.className = 'alert alert-danger';
-                recoveryResult.textContent = 'No se encontró un usuario con esos datos';
-                recoveryResult.style.display = 'block';
+                if (recoveryResult) {
+                    recoveryResult.className = 'alert alert-danger';
+                    recoveryResult.textContent = 'No se encontró un usuario con esos datos';
+                    recoveryResult.style.display = 'block';
+                }
             }
         });
     }

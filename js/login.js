@@ -1,5 +1,9 @@
+// Variables para almacenar referencias a elementos
+let currentUser = null;
 
-
+/**
+ * Alterna entre modo claro y oscuro
+ */
 function toggleMode() {
     const body = document.body;
     const loginContainer = document.querySelector('.login-contenedor');
@@ -16,14 +20,20 @@ function toggleMode() {
     body.classList.toggle('modo-oscuro');
     body.classList.toggle('modo-claro');
 
-    loginContainer.classList.toggle('modo-oscuro');
-    loginContainer.classList.toggle('modo-claro');
+    if (loginContainer) {
+        loginContainer.classList.toggle('modo-oscuro');
+        loginContainer.classList.toggle('modo-claro');
+    }
 
-    cifrasContainer.classList.toggle('modo-oscuro');
-    cifrasContainer.classList.toggle('modo-claro');
+    if (cifrasContainer) {
+        cifrasContainer.classList.toggle('modo-oscuro');
+        cifrasContainer.classList.toggle('modo-claro');
+    }
 
-    optionsContainer.classList.toggle('modo-oscuro');
-    optionsContainer.classList.toggle('modo-claro');
+    if (optionsContainer) {
+        optionsContainer.classList.toggle('modo-oscuro');
+        optionsContainer.classList.toggle('modo-claro');
+    }
 
     formControls.forEach(control => {
         control.classList.toggle('modo-oscuro');
@@ -67,12 +77,15 @@ function toggleMode() {
     }
 }
 
+/**
+ * Aplica el tema guardado al cargar la página
+ */
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme') || 'claro';
     const body = document.body;
     const loginContainer = document.querySelector('.login-contenedor');
     const cifrasContainer = document.querySelector('.cifras-contenedor');
-    const optionsContainer = document.querySelector('.opciones-contenedor');
+    const optionsContainer = document.querySelector('.options-contenedor');
     const formControls = document.querySelectorAll('.form-control');
     const btnPrincipal = document.querySelector('.btn-principal');
     const btnSecundario = document.querySelectorAll('.btn-secundario');
@@ -84,12 +97,21 @@ function applySavedTheme() {
     if (savedTheme === 'oscuro') {
         body.classList.add('modo-oscuro');
         body.classList.remove('modo-claro');
-        loginContainer.classList.add('modo-oscuro');
-        loginContainer.classList.remove('modo-claro');
-        cifrasContainer.classList.add('modo-oscuro');
-        cifrasContainer.classList.remove('modo-claro');
-        optionsContainer.classList.add('modo-oscuro');
-        optionsContainer.classList.remove('modo-claro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-oscuro');
+            loginContainer.classList.remove('modo-claro');
+        }
+        
+        if (cifrasContainer) {
+            cifrasContainer.classList.add('modo-oscuro');
+            cifrasContainer.classList.remove('modo-claro');
+        }
+        
+        if (optionsContainer) {
+            optionsContainer.classList.add('modo-oscuro');
+            optionsContainer.classList.remove('modo-claro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-oscuro');
@@ -106,8 +128,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-claro');
         });
 
-        btnModo.classList.add('modo-oscuro');
-        btnModo.classList.remove('modo-claro');
+        if (btnModo) {
+            btnModo.classList.add('modo-oscuro');
+            btnModo.classList.remove('modo-claro');
+            btnModo.textContent = '🔦';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-oscuro');
@@ -124,16 +149,24 @@ function applySavedTheme() {
             link.classList.remove('modo-claro');
         });
 
-        btnModo.textContent = '🔦';
     } else {
         body.classList.add('modo-claro');
         body.classList.remove('modo-oscuro');
-        loginContainer.classList.add('modo-claro');
-        loginContainer.classList.remove('modo-oscuro');
-        cifrasContainer.classList.add('modo-claro');
-        cifrasContainer.classList.remove('modo-oscuro');
-        optionsContainer.classList.add('modo-claro');
-        optionsContainer.classList.remove('modo-oscuro');
+        
+        if (loginContainer) {
+            loginContainer.classList.add('modo-claro');
+            loginContainer.classList.remove('modo-oscuro');
+        }
+        
+        if (cifrasContainer) {
+            cifrasContainer.classList.add('modo-claro');
+            cifrasContainer.classList.remove('modo-oscuro');
+        }
+        
+        if (optionsContainer) {
+            optionsContainer.classList.add('modo-claro');
+            optionsContainer.classList.remove('modo-oscuro');
+        }
         
         formControls.forEach(control => {
             control.classList.add('modo-claro');
@@ -150,8 +183,11 @@ function applySavedTheme() {
             btn.classList.remove('modo-oscuro');
         });
 
-        btnModo.classList.add('modo-claro');
-        btnModo.classList.remove('modo-oscuro');
+        if (btnModo) {
+            btnModo.classList.add('modo-claro');
+            btnModo.classList.remove('modo-oscuro');
+            btnModo.textContent = '🌚';
+        }
 
         headings.forEach(heading => {
             heading.classList.add('modo-claro');
@@ -167,16 +203,17 @@ function applySavedTheme() {
             link.classList.add('modo-claro');
             link.classList.remove('modo-oscuro');
         });
-
-        btnModo.textContent = '🌚';
     }
 }
 
+/**
+ * Maneja el inicio de sesión
+ */
 function handleLogin(e) {
     e.preventDefault();
     
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username') ? document.getElementById('username').value.trim() : '';
+    const password = document.getElementById('password') ? document.getElementById('password').value : '';
     
     if (!username || !password) {
         alert('Por favor complete todos los campos');
@@ -195,29 +232,60 @@ function handleLogin(e) {
     if (user) {
         // Guardar usuario logueado en localStorage
         localStorage.setItem('loggedInUser', JSON.stringify(user));
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; // Redirigir al dashboard
     } else {
         alert('Usuario o contraseña incorrectos');
     }
 }
 
+/**
+ * Cierra la sesión del usuario
+ */
+function logout() {
+    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+        localStorage.removeItem('loggedInUser');
+        // Ocultar botón de cerrar sesión
+        const logoutBtn = document.getElementById('btn-logout');
+        if (logoutBtn) {
+            logoutBtn.style.display = 'none';
+        }
+        alert('Sesión cerrada correctamente');
+    }
+}
 
+/**
+ * Verifica si hay un usuario logueado y muestra/oculta el botón de cerrar sesión
+ */
+function checkLoggedInUser() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const logoutBtn = document.getElementById('btn-logout');
+    
+    if (loggedInUser && logoutBtn) {
+        logoutBtn.style.display = 'block';
+        logoutBtn.addEventListener('click', logout);
+    } else if (logoutBtn) {
+        logoutBtn.style.display = 'none';
+    }
+}
+
+// Evento cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('toggleModeButton');
     const loginForm = document.getElementById('loginForm');
 
+    // Configurar botón de cambio de modo
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleMode);
     }
 
+    // Configurar formulario de login
     if (loginForm) {
         loginForm.addEventListener('submit', handleLogin);
     }
     
+    // Aplicar tema guardado
     applySavedTheme();
     
-
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    if (loggedInUser) {
-    }
+    // Verificar si hay usuario logueado
+    checkLoggedInUser();
 });

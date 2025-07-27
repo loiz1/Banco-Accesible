@@ -1,4 +1,22 @@
-/* Estilos generales */
+/* === VARIABLES CSS === */
+:root {
+    --color-fondo-claro: #bcb49a;
+    --color-contenedor-claro: rgba(202, 186, 128, 0.535);
+    --color-sombra-claro: #9b9257;
+    --color-texto-claro-h1: #948b6c;
+    --color-boton-principal-claro: #d0b13f;
+    --color-boton-secundario-claro: #9b8637;
+    
+    --color-fondo-oscuro: #032e36;
+    --color-contenedor-oscuro: #059ea9;
+    --color-sombra-oscuro: #026f7d;
+    --color-texto-oscuro: #ecf0f1;
+    --color-texto-oscuro-h1: #032e36;
+    --color-boton-principal-oscuro: #cdaa2c;
+    --color-boton-secundario-oscuro: #04857e;
+}
+
+/* === ESTILOS GENERALES === */
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Arial', sans-serif;
@@ -7,25 +25,21 @@ body {
 }
 
 body.modo-claro {
-    background-color: #bcb49a;
+    background-color: var(--color-fondo-claro);
 }
 
 body.modo-oscuro {
-    background-color: #032e36;
-    color: #ecf0f1;
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
 }
 
-
-
-
-/* Contenedores*/
-
+/* === CONTENEDORES === */
 .login-contenedor {
-    background-color:rgba(202, 186, 128, 0.535);
+    background-color: var(--color-contenedor-claro);
     width: 100vh; 
     height: 95vh; 
     border-radius: 10px;
-    box-shadow: 0 4px 6px #9b9257;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
     padding: 10px; 
     align-items: center;
     margin: 10px auto;
@@ -34,19 +48,40 @@ body.modo-oscuro {
     flex-direction: column;
     justify-content: center;
     font-size: 15px;
+    position: relative;
+    padding-bottom: 160px; 
 }
-.login-contenedor.modo-oscuro {
-    background-color: #059ea9;
-    color: #f1ecec;
-    box-shadow: 0 2px 4px #026f7d;
+
+body.modo-oscuro .login-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    color: var(--color-texto-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
 }
 
 .coffe {
   transition: transform 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  width: 190px;
+  height: auto;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.coffe:hover {
+  transform: translateX(-50%) scale(1.1); 
+}
+
+.coffe1 {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: absolute;
   width: 190px;
   height: 210px;
+  top: -25px;
+  right: 1150px;
 }
-.coffe:hover {
+
+.coffe1:hover {
   transform: scale(1.1); 
 }
 
@@ -55,31 +90,31 @@ body.modo-oscuro {
     bottom: 10px;  
     right: 85px;
     width: 360px; 
-    background-color: rgba(202, 186, 128, 0.535);
+    background-color: var(--color-contenedor-claro);
     padding: 20px; 
-    box-shadow: 0 4px 6px #504502;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
     border-radius: 10px;
     transition: all 0.3s ease;  
     display: flex; 
     flex-direction: column; 
     align-items: center;
-    }
+}
 
     
-.options-contenedor.modo-oscuro {
-    background-color: #059ea9;
-    color: #f1ecec;
-    box-shadow: 0 2px 4px #026f7d;
+body.modo-oscuro .options-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    color: var(--color-texto-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
 }
 
 .cifras-contenedor {
-    background-color: rgba(202, 186, 128, 0.535);
+    background-color: var(--color-contenedor-claro);
     border-radius: 10px;
     text-align: center;
     width: 60vh; 
     height: 50vh; 
     border-radius: 10px;
-    box-shadow: 0 4px 6px #504502;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
     padding: 5px; 
     align-items: center;
     margin: 10px auto;
@@ -89,84 +124,140 @@ body.modo-oscuro {
     justify-content: center;
     font-size: 12px;
 }
-.cifras-contenedor.modo-oscuro {
-    background-color: #059ea9;
-    color: #f1ecec;
-    box-shadow: 0 2px 4px #026f7d;
+
+body.modo-oscuro .cifras-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    color: var(--color-texto-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
 }
+
 .bank-contenedor {
     position: absolute;
-    bottom: 120px;  
-    right: 100px;
-    width: 360px; 
+    bottom: 50px;  
+    right: -80px;
     padding: 50px; 
     z-index: 10;
 }
+
 .bank {
   transition: transform 0.3s ease, opacity 0.3s ease;
-  width: 190px;
-  height: 210px;
 }
+
 .bank:hover {
   transform: scale(1.1); 
 }
 
+.datos-contenedor {
+    position: absolute;
+    top: 20px;  
+    right: 320px;
+    width: 360px; 
+    padding: 50px; 
+    z-index: 10;
+}
 
+.datos-contenedor {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-/*Textos en login contenedor*/
+.datos-contenedor:hover {
+  transform: scale(1.1); 
+}
 
+.cuenta-contenedor {
+    position: absolute;
+    top: -105px;  
+    right: 130px;
+    width: 460px; 
+    padding: 50px; 
+    z-index: 10;
+}
+
+.cuenta-contenedor {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.cuenta-contenedor:hover {
+  transform: scale(1.1); 
+}
+
+.hand-contenedor {
+    position: absolute;
+    bottom: 25px;  
+    right: 250px;
+}
+
+.hand-contenedor {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hand-contenedor:hover {
+  transform: scale(1.1); 
+}
+
+/* === TEXTOS EN LOGIN CONTENEDOR === */
 .login-contenedor .fw-bold {
     font-size: 1.5rem;
     margin-bottom: 5px;
 }
-.login-contenedor.modo-oscuro .fw-bold {
+
+body.modo-oscuro .login-contenedor .fw-bold {
     font-size: 1.5rem;
     margin-bottom: 5px;
 }
 
-.login-contenedor.modo-oscuro p {
+body.modo-oscuro .login-contenedor p {
     font-size: 1rem;
     color: #15595e;
 }
-.login-contenedor.modo-oscuro h1 {
+
+body.modo-oscuro .login-contenedor h1 {
     font-size: 60px;
-    color: #032e36; 
+    color: var(--color-texto-oscuro-h1); 
     font-weight: bold;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.login-contenedor.modo-oscuro h1:hover {
+body.modo-oscuro .login-contenedor h1:hover {
     transform: scale(1.1); 
 }
 
 .login-contenedor h1 {
     font-size: 60px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    color: #948b6c; 
+    color: var(--color-texto-claro-h1); 
     font-weight: bold;
 }
+
 .login-contenedor.modo-claro h1:hover {
     transform: scale(1.1); 
 }
 
-/*Textos en cifras contenedor*/
+.login-contenedor h2 {
+    font-size: 30px;
+    color: #747373; 
+    font-weight: bold;
+}
 
-
+/* === TEXTOS EN CIFRAS CONTENEDOR === */
 .cifras-contenedor h1.text-center.mb-3 {
     color: #80650c;
     font-size: 40px;
     font-weight: bold;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }   
-.cifras-contenedor.modo-oscuro h1.text-center.mb-3 {
+
+body.modo-oscuro .cifras-contenedor h1.text-center.mb-3 {
     color: #04363c;
     font-size: 40px;
     font-weight: bold;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }  
-.cifras-contenedor.modo-oscuro h1:hover {
+
+body.modo-oscuro .cifras-contenedor h1:hover {
     transform: scale(1.1); 
 }
+
 .cifras-contenedor.modo-claro h1:hover {
     transform: scale(1.1); 
 }
@@ -175,59 +266,59 @@ body.modo-oscuro {
     font-size: 12px;
     color: #4d3c03;
 }
-.cifras-contenedor.modo-oscuro p {
+
+body.modo-oscuro .cifras-contenedor p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 12px;
     color: #beeaee;
 }
+
 .cifras-contenedor p.fw-bold {
     font-size: 20px;
     margin-bottom: 0px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/*Textos en options contenedor*/
-
+/* === TEXTOS EN OPTIONS CONTENEDOR === */
 .options-contenedor h1.text-center.mb-3 {
     color: #aa880c;
     font-size: 40px;
     font-weight: bold;
 }   
-.options-contenedor.modo-oscuro h1.text-center.mb-3 {
+
+body.modo-oscuro .options-contenedor h1.text-center.mb-3 {
     color: #04363c;
     font-size: 40px;
     font-weight: bold;
 }  
+
 .options-contenedor.modo-claro p {
     font-size: 12px;
     color: #816d2b;
-    
 }
-.options-contenedor.modo-oscuro p {
+
+body.modo-oscuro .options-contenedor p {
     font-size: 12px;
     color: #beeaee;
 }
+
 .options-contenedor p.fw-bold {
     font-size: 20px;
     margin-bottom: 0px;
 }
 
-
-/*Textos en bank contenedor*/
-
+/* === TEXTOS EN BANK CONTENEDOR === */
 .options-contenedor p {
     font-size: 12px;
     color: #433400; 
 }
 
-.options-contenedor.modo-oscuro p {
+body.modo-oscuro .options-contenedor p {
     font-size: 12px;
     color: #beeaee; 
 }
 
-
-
-
-/* Formulario */
+/* === FORMULARIO === */
 .form-control {
     margin-bottom: 10px;
     padding: 5px;
@@ -240,9 +331,7 @@ body.modo-oscuro {
     margin-bottom: -10px;
 }
 
-
-
-/*Botones en Modo Claro*/
+/* === BOTONES EN MODO CLARO === */
 .btn {
     border-radius: 5px;
     border: none;
@@ -255,25 +344,51 @@ body.modo-oscuro {
     font-size: 12px; 
     margin-bottom: -10px; 
 }
+
+.btn1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: absolute;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 10%;
+    margin-bottom: 10px;
+    padding: 1px 1px;
+    font-size: 12px; 
+    bottom: 5px;
+    right: 152px;
+}
+
 .btn-principal.modo-claro {
-    background-color: #077b6f;
-    color: rgb(255, 255, 255);
+    background-color: var(--color-boton-principal-claro);
+    color: rgb(27, 22, 1);
     font-size: 16px;
     padding: 15px 70px;
 }
 
 .btn-principal.modo-claro:hover {
-    background-color: #11524b;
+    background-color: #dec158;
     transform: translateY(-2px);
 }
 
 .btn-secundario.modo-claro {
-    background-color: #9b8637;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--color-boton-secundario-claro);
     color: #352f0eea;
     font-size: 12px;
     padding: 3px 20px;
     margin-bottom: 0px;
-    
+}
+
+.btn1.modo-claro {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--color-boton-secundario-claro);
+    color: #352f0eea;
+    font-size: 12px;
+    padding: 3px 20px;
+    margin-bottom: 0px;
 }
 
 .btn-secundario.modo-claro:hover {
@@ -281,10 +396,9 @@ body.modo-oscuro {
     transform: translateY(-2px);
 }
 
-/*Botones en Modo Oscuro*/
-
+/* === BOTONES EN MODO OSCURO === */
 .btn-principal.modo-oscuro {
-    background-color: #cdaa2c;
+    background-color: var(--color-boton-principal-oscuro);
     color: rgb(82, 63, 26);
     font-size: 16px;
     padding: 15px 70px;
@@ -296,12 +410,20 @@ body.modo-oscuro {
 }
 
 .btn-secundario.modo-oscuro {
-    background-color: #04857e;
+    background-color: var(--color-boton-secundario-oscuro);
     color: #fefefeea;
     font-size: 12px;
     padding: 3px 0px;
     margin-bottom: 0px;
-    
+}
+
+.btn1.modo-oscuro {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #171d1d;
+    color: #ffffffea;
+    font-size: 12px;
+    padding: 3px 20px;
+    margin-bottom: 0px;
 }
 
 .btn-secundario.modo-oscuro:hover {
@@ -309,9 +431,7 @@ body.modo-oscuro {
     transform: translateY(-2px);
 }
 
-
-
-/*Boton Cambiar Modos*/
+/* === BOTÓN CAMBIAR MODOS === */
 .mode-toggle-floating {
     position: fixed;
     bottom: 20px;
@@ -328,54 +448,59 @@ body.modo-oscuro {
     justify-content: center;
     font-size: 20px;
 }
+
 .mode-toggle-floating.modo-claro:hover {
     background-color: #1abc9c;
     transform: translateY(-2px);
 }
+
 .mode-toggle-floating.modo-oscuro:hover {
     background-color: #89803f;
     transform: translateY(-2px);
 }
+
 .mode-toggle-floating.modo-claro {
-    background-color: rgba(202, 186, 128, 0.535);
+    background-color: var(--color-contenedor-claro);
 }
 
 .mode-toggle-floating.modo-oscuro {
     background-color: #1abc9c;
 }
 
-
-
-
-/*Responsive Design*/
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 880px) {
-
-.cifras-contenedor {
-    display: block;
-}
-.bank-contenedor {
-    display: none
-}
-.options-contenedor {
+    .cifras-contenedor {
+        display: block;
+    }
     
-    width: 2000px;
-    padding: 5px;
-
-}
+    .bank-contenedor {
+        display: none;
+    }
+    
+    .cuenta-contenedor {
+        display: none;
+    }
+    
+    .options-contenedor {
+        width: 2000px;
+        padding: 5px;
+    }
 }
 
 @media (max-width: 750px) {
-.cifras-contenedor {
-display: none;
-}
-.bank-contenedor {
-    display: none;
-}
-.options-contenedor {
-    position: static;
-    width: 83%;
-    padding: 10px;
-    align-items: center;
-    margin: 0 auto;
-}
+    .cifras-contenedor {
+        display: none;
+    }
+    
+    .bank-contenedor {
+        display: none;
+    }
+    
+    .options-contenedor {
+        position: static;
+        width: 83%;
+        padding: 10px;
+        align-items: center;
+        margin: 0 auto;
+    }
 }
