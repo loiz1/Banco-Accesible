@@ -640,7 +640,7 @@ body.modo-oscuro .movimiento-fecha {
         margin: 15px auto 0;
         display: block;
         right: -20px;
-        bottom: 190px;
+        bottom: 100px;
     }
     
     .hidden-form {
@@ -667,7 +667,7 @@ body.modo-oscuro .movimiento-fecha {
         margin: 15px auto 0;
         display: block;
         right: -20px;
-        bottom: 190px;
+        bottom: 100px;
     }
 }
 
@@ -703,10 +703,8 @@ body.modo-oscuro .movimiento-fecha {
     .datos-imagen {
         position: absolute;
         width: 90px;
-        margin: 15px auto 0;
-        display: block;
         right: 5px;
-        bottom: 100px;
+        bottom: 10px;
     }
     
     .cuenta-imagen {
@@ -720,7 +718,7 @@ body.modo-oscuro .movimiento-fecha {
     .coffe1 {
         width: 100px;
         height: 100px;
-        top: 10px;
+        top: -30px;
     }
     
     .button-group {
