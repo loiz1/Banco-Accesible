@@ -1,0 +1,436 @@
+/* === VARIABLES CSS === */
+:root {
+    --color-fondo-claro: #bcb49a;
+    --color-contenedor-claro: rgba(202, 186, 128, 0.535);
+    --color-sombra-claro: #9b9257;
+    --color-texto-claro-h1: #948b6c;
+    --color-boton-principal-claro: #d0b13f;
+    --color-boton-secundario-claro: #9b8637;
+    
+    --color-fondo-oscuro: #032e36;
+    --color-contenedor-oscuro: #059ea9;
+    --color-sombra-oscuro: #026f7d;
+    --color-texto-oscuro: #ecf0f1;
+    --color-texto-oscuro-h1: #032e36;
+    --color-boton-principal-oscuro: #cdaa2c;
+    --color-boton-secundario-oscuro: #04857e;
+}
+
+/* === ESTILOS GENERALES === */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body.modo-claro {
+    background-color: var(--color-fondo-claro);
+}
+
+body.modo-oscuro {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.login-contenedor {
+    background-color: var(--color-contenedor-claro);
+    width: 100%;
+    max-width: 500px;
+    min-height: 95vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--color-sombra-claro);
+    padding: 20px;
+    margin: 10px auto;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body.modo-oscuro .login-contenedor {
+    background-color: var(--color-contenedor-oscuro);
+    color: var(--color-texto-oscuro);
+    box-shadow: 0 2px 4px var(--color-sombra-oscuro);
+}
+
+/* === IMÁGENES === */
+.olv-contenedor {
+    position: absolute;
+    width: 196px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.olv-contenedor:first-child {
+    top: 20px;
+    left: 20px;
+}
+
+.olv-contenedor:last-child {
+    top: 20px;
+    right: 20px;
+}
+
+.olv-contenedor:hover {
+    transform: scale(1.1);
+}
+/* === ID === */
+.id-contenedor {
+    position: absolute;
+    width: 110px;
+    height: auto;
+    transition: transform 0.3s ease;
+    right: 10px;
+    bottom : 10px;
+}
+
+.id-contenedor:first-child {
+    top: 20px;
+    left: 20px;
+}
+
+.id-contenedor:last-child {
+    top: 20px;
+    right: 20px;
+}
+
+.id-contenedor:hover {
+    transform: scale(1.1);
+}
+
+
+/* === TÍTULOS === */
+.login-contenedor h1 {
+    font-size: 60px;
+    transition: transform 0.3s ease;
+    color: var(--color-texto-claro-h1);
+    font-weight: bold;
+    text-align: center;
+    margin: 80px 0 10px 0;
+}
+
+body.modo-oscuro .login-contenedor h1 {
+    color: var(--color-texto-oscuro-h1);
+}
+
+.login-contenedor h1:hover {
+    transform: scale(1.05);
+}
+
+.login-contenedor h2 {
+    font-size: 30px;
+    color: #747373;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+body.modo-oscuro .login-contenedor h2 {
+    color: #ecf0f1;
+}
+
+/* === FORMULARIO === */
+.form-control {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body.modo-oscuro .form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #026f7d;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-boton-principal-claro);
+    box-shadow: 0 0 5px var(--color-boton-principal-claro);
+}
+
+/* === BOTONES === */
+.btn {
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+.btn-principal {
+    background-color: var(--color-boton-principal-claro);
+    color: rgb(27, 22, 1);
+}
+
+.btn-principal:hover {
+    background-color: #dec158;
+    transform: translateY(-2px);
+}
+
+body.modo-oscuro .btn-principal {
+    background-color: var(--color-boton-principal-oscuro);
+    color: rgb(82, 63, 26);
+}
+
+body.modo-oscuro .btn-principal:hover {
+    background-color: #ba9a2a;
+}
+
+.btn {
+    width: 50% !important;
+    margin: 20px auto 0 !important;
+    background-color: var(--color-boton-secundario-claro);
+    color: #ffffffea;
+    font-size: 14px;
+    padding: 10px 20px;
+}
+
+.btn:hover {
+    background-color: #a59b11;
+    transform: translateY(-2px);
+}
+
+body.modo-oscuro .btn1 {
+    background-color: var(--color-boton-secundario-oscuro);
+    color: #fefefeea;
+}
+
+body.modo-oscuro .btn:hover {
+    background-color: #14b19c;
+}
+
+/* === RESULTADOS DE RECUPERACIÓN === */
+#recoveryResult {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* === BOTÓN DE CAMBIO DE MODO === */
+.mode-toggle-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+.mode-toggle-floating.modo-claro {
+    background-color: var(--color-contenedor-claro);
+    color: #333;
+}
+
+.mode-toggle-floating.modo-oscuro {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.mode-toggle-floating:hover {
+    transform: translateY(-2px);
+}
+
+.mode-toggle-floating.modo-claro:hover {
+    background-color: #1abc9c;
+}
+
+.mode-toggle-floating.modo-oscuro:hover {
+    background-color: #89803f;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Para pantallas de 1200px o menos */
+@media (max-width: 1200px) {
+    .login-contenedor {
+        max-width: 450px;
+        padding: 25px;
+    }
+    
+    .login-contenedor h1 {
+        font-size: 50px;
+        margin-top: 70px;
+    }
+    
+    .hand-contenedor {
+        width: 90px;
+    }
+    
+    .hand-contenedor:first-child {
+        left: 15px;
+        top: 15px;
+    }
+    
+    .hand-contenedor:last-child {
+        right: 15px;
+        top: 15px;
+    }
+}
+
+/* Para pantallas de 900px o menos */
+@media (max-width: 900px) {
+    .login-contenedor {
+        max-width: 400px;
+        min-height: 90vh;
+        padding: 20px;
+    }
+    
+    .login-contenedor h1 {
+        font-size: 45px;
+        margin-top: 65px;
+    }
+    
+    .login-contenedor h2 {
+        font-size: 25px;
+    }
+    
+    .hand-contenedor {
+        width: 80px;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    .btn {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+}
+
+/* Para pantallas de 700px o menos */
+@media (max-width: 700px) {
+    .login-contenedor {
+        max-width: 90%;
+        min-height: 85vh;
+        padding: 15px;
+        margin: 20px auto;
+    }
+    
+    .login-contenedor h1 {
+        font-size: 40px;
+        margin-top: 60px;
+    }
+    
+    .login-contenedor h2 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
+    .hand-contenedor {
+        width: 70px;
+        top: 10px;
+    }
+    
+    .hand-contenedor:first-child {
+        left: 10px;
+    }
+    
+    .hand-contenedor:last-child {
+        right: 10px;
+    }
+    
+    .form-control {
+        padding: 9px 10px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .btn {
+        padding: 9px 12px;
+        font-size: 14px;
+        margin: 8px 0;
+    }
+    
+    .btn1 {
+        width: 60% !important;
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Para pantallas de 500px o menos */
+@media (max-width: 500px) {
+    .login-contenedor {
+        max-width: 95%;
+        padding: 12px;
+        min-height: 80vh;
+    }
+    
+    .login-contenedor h1 {
+        font-size: 35px;
+        margin-top: 55px;
+    }
+    
+    .login-contenedor h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .hand-contenedor {
+        width: 60px;
+        top: 8px;
+    }
+    
+    .hand-contenedor:first-child {
+        left: 8px;
+    }
+    
+    .hand-contenedor:last-child {
+        right: 8px;
+    }
+    
+    .form-control {
+        padding: 8px;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .btn {
+        padding: 8px 10px;
+        font-size: 13px;
+        margin: 6px 0;
+    }
+    
+    .btn1 {
+        width: 70% !important;
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+    
+    .mode-toggle-floating {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
