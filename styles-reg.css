@@ -67,13 +67,13 @@ body.modo-oscuro .login-contenedor {
     width: 110px;
     height: auto;
     transition: transform 0.3s ease;
-    top: 20px;
+    top: 5px;
     right:100px;
 
 }
 
 .hand-contenedor:first-child {
-    left: 20px;
+    left: 200px;
 }
 
 .hand-contenedor:last-child {
@@ -316,15 +316,16 @@ body.modo-oscuro .btn:hover {
     
     .hand-contenedor {
         width: 70px;
-        top: 10px;
+     
     }
     
     .hand-contenedor:first-child {
-        left: 10px;
+        left: 170px;
+        top: -30px;
     }
     
     .hand-contenedor:last-child {
-        right: 10px;
+        right: 100px;
     }
     
     .form-control {
@@ -366,16 +367,10 @@ body.modo-oscuro .btn:hover {
     
     .hand-contenedor {
         width: 60px;
-        top: 8px;
+        top: -10px;
+        right: 700px;
     }
-    
-    .hand-contenedor:first-child {
-        left: 8px;
-    }
-    
-    .hand-contenedor:last-child {
-        right: 8px;
-    }
+
     
     .form-control {
         padding: 8px;
