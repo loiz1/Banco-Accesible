@@ -1,4 +1,4 @@
-// Función para alternar entre modos claro y oscuro (misma que en welcome.js)
+
 function toggleMode() {
     const body = document.body;
     const loginContainer = document.querySelector('.login-contenedor');
@@ -10,23 +10,19 @@ function toggleMode() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
-    // Toggle body class
     body.classList.toggle('modo-oscuro');
     body.classList.toggle('modo-claro');
 
-    // Toggle container class
     if (loginContainer) {
         loginContainer.classList.toggle('modo-oscuro');
         loginContainer.classList.toggle('modo-claro');
     }
 
-    // Toggle form controls
     formControls.forEach(control => {
         control.classList.toggle('modo-oscuro');
         control.classList.toggle('modo-claro');
     });
 
-    // Toggle buttons
     if (btnPrincipal) {
         btnPrincipal.classList.toggle('modo-oscuro');
         btnPrincipal.classList.toggle('modo-claro');
@@ -37,31 +33,26 @@ function toggleMode() {
         btn.classList.toggle('modo-claro');
     });
 
-    // Toggle mode button
     if (btnModo) {
         btnModo.classList.toggle('modo-oscuro');
         btnModo.classList.toggle('modo-claro');
     }
 
-    // Toggle headings
     headings.forEach(heading => {
         heading.classList.toggle('modo-oscuro');
         heading.classList.toggle('modo-claro');
     });
 
-    // Toggle paragraphs
     paragraphs.forEach(paragraph => {
         paragraph.classList.toggle('modo-oscuro');
         paragraph.classList.toggle('modo-claro');
     });
 
-    // Toggle links
     links.forEach(link => {
         link.classList.toggle('modo-oscuro');
         link.classList.toggle('modo-claro');
     });
 
-    // Update button text and save preference
     if (body.classList.contains('modo-oscuro')) {
         if (btnModo) btnModo.textContent = '🔦';
         localStorage.setItem('theme', 'oscuro');
@@ -84,7 +75,6 @@ function applySavedTheme() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
-    // Apply saved theme
     if (savedTheme === 'oscuro') {
         body.classList.add('modo-oscuro');
         body.classList.remove('modo-claro');
@@ -187,18 +177,15 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleButton.addEventListener('click', toggleMode);
     }
     
-    // Aplicar tema guardado
     applySavedTheme();
     
     if (recoveryForm) {
         recoveryForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Usar los IDs correctos del HTML
             const names = document.getElementById('recoveryNames').value.trim();
             const email = document.getElementById('recoveryEmail').value.trim();
             
-            // Validaciones
             if (!names || !email) {
                 if (recoveryResult) {
                     recoveryResult.className = 'alert alert-danger';
@@ -208,10 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Obtener usuarios
             let users = JSON.parse(localStorage.getItem('users')) || [];
             
-            // Buscar usuario por username y email
             const user = users.find(u => 
                 u.names === names && u.email === email
             );
@@ -223,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <strong>Usuario encontrado:</strong><br>
                         Nombre de usuario: ${user.username}<br>
                     `;
-                    // Mostrar contraseña solo si el usuario confirma
                     const showPassword = confirm("¿Desea ver su contraseña?");
                     if (showPassword) {
                         recoveryResult.innerHTML += `Contraseña: ${user.password}`;

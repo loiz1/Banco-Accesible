@@ -1,4 +1,5 @@
 /* === VARIABLES CSS === */
+
 :root {
     --color-fondo-claro: #bcb49a;
     --color-contenedor-claro: rgba(202, 186, 128, 0.535);
@@ -17,6 +18,7 @@
 }
 
 /* === ESTILOS GENERALES === */
+
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Arial', sans-serif;
@@ -34,6 +36,7 @@ body.modo-oscuro {
 }
 
 /* === CONTENEDORES === */
+
 .login-contenedor {
     background-color: var(--color-contenedor-claro);
     width: 100vh; 
@@ -196,6 +199,7 @@ body.modo-oscuro .cifras-contenedor {
 }
 
 /* === TEXTOS EN LOGIN CONTENEDOR === */
+
 .login-contenedor .fw-bold {
     font-size: 1.5rem;
     margin-bottom: 5px;
@@ -240,6 +244,7 @@ body.modo-oscuro .login-contenedor h1:hover {
 }
 
 /* === TEXTOS EN CIFRAS CONTENEDOR === */
+
 .cifras-contenedor h1.text-center.mb-3 {
     color: #80650c;
     font-size: 40px;
@@ -280,6 +285,7 @@ body.modo-oscuro .cifras-contenedor p {
 }
 
 /* === TEXTOS EN OPTIONS CONTENEDOR === */
+
 .options-contenedor h1.text-center.mb-3 {
     color: #aa880c;
     font-size: 40px;
@@ -308,6 +314,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === TEXTOS EN BANK CONTENEDOR === */
+
 .options-contenedor p {
     font-size: 12px;
     color: #433400; 
@@ -319,6 +326,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === FORMULARIO === */
+
 .form-control {
     margin-bottom: 10px;
     padding: 5px;
@@ -332,6 +340,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === BOTONES EN MODO CLARO === */
+
 .btn {
     border-radius: 5px;
     border: none;
@@ -397,6 +406,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === BOTONES EN MODO OSCURO === */
+
 .btn-principal.modo-oscuro {
     background-color: var(--color-boton-principal-oscuro);
     color: rgb(82, 63, 26);
@@ -432,6 +442,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === BOTÓN CAMBIAR MODOS === */
+
 .mode-toggle-floating {
     position: fixed;
     bottom: 20px;
@@ -468,6 +479,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === RESPONSIVE DESIGN === */
+
 @media (max-width: 880px) {
     .cifras-contenedor {
         display: block;

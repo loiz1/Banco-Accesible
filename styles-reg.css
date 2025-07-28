@@ -1,4 +1,6 @@
+
 /* === VARIABLES CSS === */
+
 :root {
     --color-fondo-claro: #bcb49a;
     --color-contenedor-claro: rgba(202, 186, 128, 0.535);
@@ -17,6 +19,7 @@
 }
 
 /* === ESTILOS GENERALES === */
+
 * {
     box-sizing: border-box;
 }
@@ -38,6 +41,7 @@ body.modo-oscuro {
 }
 
 /* === CONTENEDOR PRINCIPAL === */
+
 .login-contenedor {
     background-color: var(--color-contenedor-claro);
     width: 100%;
@@ -62,6 +66,7 @@ body.modo-oscuro .login-contenedor {
 }
 
 /* === IMÁGENES === */
+
 .hand-contenedor {
     position: absolute;
     width: 110px;
@@ -85,6 +90,7 @@ body.modo-oscuro .login-contenedor {
 }
 
 /* === TÍTULOS === */
+
 .login-contenedor h1 {
     font-size: 60px;
     transition: transform 0.3s ease;
@@ -115,6 +121,7 @@ body.modo-oscuro .login-contenedor h2 {
 }
 
 /* === FORMULARIO === */
+
 .form-control {
     margin-bottom: 20px;
     padding: 12px 15px;
@@ -139,6 +146,7 @@ body.modo-oscuro .form-control {
 }
 
 /* === BOTONES === */
+
 .btn {
     border-radius: 5px;
     border: none;
@@ -194,6 +202,7 @@ body.modo-oscuro .btn:hover {
     background-color: #14b19c;
 }
 /* === BOTÓN DE CAMBIO DE MODO === */
+
 .mode-toggle-floating {
     position: fixed;
     bottom: 20px;
@@ -236,7 +245,6 @@ body.modo-oscuro .btn:hover {
 
 /* === RESPONSIVE DESIGN === */
 
-/* Para pantallas de 1200px o menos */
 @media (max-width: 1200px) {
     .login-contenedor {
         max-width: 450px;
@@ -263,7 +271,7 @@ body.modo-oscuro .btn:hover {
     }
 }
 
-/* Para pantallas de 900px o menos */
+
 @media (max-width: 900px) {
     .login-contenedor {
         max-width: 400px;
@@ -295,7 +303,7 @@ body.modo-oscuro .btn:hover {
     }
 }
 
-/* Para pantallas de 700px o menos */
+
 @media (max-width: 700px) {
     .login-contenedor {
         max-width: 90%;
@@ -343,7 +351,7 @@ body.modo-oscuro .btn:hover {
     }
 }
 
-/* Para pantallas de 500px o menos */
+
 @media (max-width: 500px) {
     .login-contenedor {
         max-width: 95%;

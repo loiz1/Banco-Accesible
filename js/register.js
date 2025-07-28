@@ -1,4 +1,3 @@
-// Función para alternar entre modos claro y oscuro (misma que en welcome.js)
 function toggleMode() {
     const body = document.body;
     const loginContainer = document.querySelector('.login-contenedor');
@@ -10,23 +9,19 @@ function toggleMode() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
-    // Toggle body class
     body.classList.toggle('modo-oscuro');
     body.classList.toggle('modo-claro');
 
-    // Toggle container class
     if (loginContainer) {
         loginContainer.classList.toggle('modo-oscuro');
         loginContainer.classList.toggle('modo-claro');
     }
 
-    // Toggle form controls
     formControls.forEach(control => {
         control.classList.toggle('modo-oscuro');
         control.classList.toggle('modo-claro');
     });
 
-    // Toggle buttons
     if (btnPrincipal) {
         btnPrincipal.classList.toggle('modo-oscuro');
         btnPrincipal.classList.toggle('modo-claro');
@@ -37,31 +32,26 @@ function toggleMode() {
         btn.classList.toggle('modo-claro');
     });
 
-    // Toggle mode button
     if (btnModo) {
         btnModo.classList.toggle('modo-oscuro');
         btnModo.classList.toggle('modo-claro');
     }
 
-    // Toggle headings
     headings.forEach(heading => {
         heading.classList.toggle('modo-oscuro');
         heading.classList.toggle('modo-claro');
     });
 
-    // Toggle paragraphs
     paragraphs.forEach(paragraph => {
         paragraph.classList.toggle('modo-oscuro');
         paragraph.classList.toggle('modo-claro');
     });
 
-    // Toggle links
     links.forEach(link => {
         link.classList.toggle('modo-oscuro');
         link.classList.toggle('modo-claro');
     });
 
-    // Update button text and save preference
     if (body.classList.contains('modo-oscuro')) {
         if (btnModo) btnModo.textContent = '🔦';
         localStorage.setItem('theme', 'oscuro');
@@ -84,7 +74,6 @@ function applySavedTheme() {
     const paragraphs = document.querySelectorAll('p');
     const links = document.querySelectorAll('a');
 
-    // Apply saved theme
     if (savedTheme === 'oscuro') {
         body.classList.add('modo-oscuro');
         body.classList.remove('modo-claro');
@@ -186,21 +175,18 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleButton.addEventListener('click', toggleMode);
     }
     
-    // Aplicar tema guardado
     applySavedTheme();
     
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Eliminado el campo de identificación
             const names = document.getElementById('names').value;
             const email = document.getElementById('email').value;
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             
-            // Validaciones
             if (password !== confirmPassword) {
                 alert('Las contraseñas no coinciden');
                 return;
@@ -211,10 +197,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Obtener usuarios existentes
             let users = JSON.parse(localStorage.getItem('users')) || [];
             
-            // Verificar si el usuario ya existe (solo por username o email)
+            // Verificar si el usuario ya existe
             const existingUser = users.find(user => 
                 user.username === username || 
                 user.email === email
@@ -225,21 +210,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Crear nuevo usuario (sin identificación)
             const newUser = {
-                id: Date.now(), // ID único para el usuario
+                id: Date.now(),
                 names,
                 email,
                 username,
                 password,
-                balance: 0, // Inicializar saldo en 0 para nuevos usuarios
-                accountNumber: Math.floor(100000 + Math.random() * 900000).toString() // Número de cuenta aleatorio
+                balance: 0, 
+                accountNumber: Math.floor(100000 + Math.random() * 900000).toString()
             };
             
-            // Agregar a la lista de usuarios
             users.push(newUser);
-            
-            // Guardar en localStorage
+
             localStorage.setItem('users', JSON.stringify(users));
             
             alert('¡Registro exitoso! Ahora puedes iniciar sesión');

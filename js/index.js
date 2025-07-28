@@ -6,9 +6,6 @@ let movimientos = [];
 
 // === FUNCIONES DE INICIALIZACIÓN ===
 
-/**
- * Inicializa la aplicación cargando los datos del usuario.
- */
 function initApp() {
     loadUserData();
     updateUserInfo();
@@ -17,15 +14,12 @@ function initApp() {
     setupEventListeners();
 }
 
-/**
- * Carga los datos del usuario desde localStorage.
- */
 function loadUserData() {
     const loggedInUserStr = localStorage.getItem('loggedInUser');
     if (loggedInUserStr) {
         try {
             currentUser = JSON.parse(loggedInUserStr);
-            // Asegurarse de que el usuario tenga un saldo y número de cuenta
+            // Asegurar que el usuario tenga un saldo y número de cuenta
             if (typeof currentUser.balance === 'undefined') {
                 currentUser.balance = 0;
             }
@@ -66,10 +60,6 @@ function loadMovimientos() {
         }
     }
 }
-
-/**
- * Guarda los movimientos del usuario en localStorage.
- */
 function saveMovimientos() {
     if (currentUser && currentUser.id) {
         localStorage.setItem(`movimientos_${currentUser.id}`, JSON.stringify(movimientos));
@@ -77,10 +67,6 @@ function saveMovimientos() {
 }
 
 // === FUNCIONES DE ACTUALIZACIÓN DE LA UI ===
-
-/**
- * Actualiza la información del usuario en la UI.
- */
 function updateUserInfo() {
     if (currentUser) {
         document.getElementById('username-display').textContent = currentUser.names || 'Usuario';
@@ -89,9 +75,6 @@ function updateUserInfo() {
     }
 }
 
-/**
- * Actualiza la lista de movimientos en la UI.
- */
 function updateMovimientosLista() {
     const lista = document.getElementById('movimientos-lista');
     lista.innerHTML = '';
@@ -101,7 +84,7 @@ function updateMovimientosLista() {
         return;
     }
 
-    // Mostrar solo los últimos 8 movimientos (ajustado según tu último CSS)
+    // Mostrar solo los últimos movimientos 
     const ultimosMovimientos = movimientos.slice(-8).reverse();
 
     ultimosMovimientos.forEach(mov => {
@@ -146,7 +129,7 @@ function generarExtracto() {
 
     const saldoActual = parseInt(currentUser.balance || 0);
 
-    // Crear contenido del extracto con estilos mejorados
+    // Crear contenido del extracto
     contenido.innerHTML = `
         <div class="extracto-header">
             <h3>Bancafé - Extracto de Cuenta</h3>
@@ -169,7 +152,6 @@ function generarExtracto() {
     if (movimientos.length === 0) {
         contenido.innerHTML += '<p class="text-muted">No hay movimientos registrados.</p>';
     } else {
-        // Mostrar todos los movimientos, más recientes primero
         movimientos.slice().reverse().forEach(mov => {
             const tipoClass = mov.tipo === 'ingreso' ? 'ingreso' : 'retiro';
             const signo = mov.tipo === 'ingreso' ? '+' : '-';
@@ -193,9 +175,6 @@ function generarExtracto() {
 
 // === FUNCIONES DE MANEJO DE EVENTOS ===
 
-/**
- * Configura los event listeners para los formularios y botones.
- */
 function setupEventListeners() {
     // Formulario de transacción
     const formTransaccion = document.getElementById('transaccion-form');
@@ -203,7 +182,6 @@ function setupEventListeners() {
         formTransaccion.addEventListener('submit', handleTransaccion);
     }
 
-    // Botón de ver extracto (modal)
     const btnVerExtracto = document.getElementById('btn-ver-extracto');
     if (btnVerExtracto) {
         btnVerExtracto.addEventListener('click', generarExtracto);
@@ -215,19 +193,16 @@ function setupEventListeners() {
         btnDescargarPdf.addEventListener('click', descargarPDF);
     }
 
-    // Formulario de cambio de usuario
     const formChangeUser = document.getElementById('form-change-user-data');
     if (formChangeUser) {
         formChangeUser.addEventListener('submit', handleChangeUser);
     }
 
-    // Formulario de cambio de contraseña
     const formChangePassword = document.getElementById('form-change-password-data');
     if (formChangePassword) {
         formChangePassword.addEventListener('submit', handleChangePassword);
     }
 
-    // === NUEVA LÓGICA PARA FORMULARIO DE TRANSACCIONES DESPLEGABLE ===
     // Botón para mostrar/ocultar formulario de transacción
     const btnTransaccion = document.getElementById('btn-realizar-transaccion');
     if (btnTransaccion) {
@@ -236,7 +211,6 @@ function setupEventListeners() {
         });
     }
 
-    // Botones para mostrar/ocultar formularios de cambio de datos
     const btnChangeUserMain = document.getElementById('btn-change-user');
     const btnChangePasswordMain = document.getElementById('btn-change-password');
 
@@ -255,17 +229,13 @@ function setupEventListeners() {
 const btnLogout = document.getElementById('btn-logout');
 if (btnLogout) {
     btnLogout.addEventListener('click', function() {
-        // Confirmar cierre de sesión
         if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-            // Eliminar datos del usuario de localStorage
             localStorage.removeItem('loggedInUser');
-            // Redirigir a la página de login (ajusta la ruta si es necesario)
-            window.location.href = 'login.html'; // O la página principal de tu app
+            window.location.href = 'login.html';
         }
     });
 }
 
-    // Cerrar formularios al hacer clic fuera
     document.addEventListener('click', function(event) {
         const forms = document.querySelectorAll('.hidden-form');
         const buttons = document.querySelectorAll('#btn-realizar-transaccion, #btn-change-user, #btn-change-password');
@@ -289,9 +259,6 @@ if (btnLogout) {
     });
 }
 
-/**
- * Maneja el envío del formulario de transacción.
- */
 function handleTransaccion(event) {
     event.preventDefault();
     
@@ -331,17 +298,14 @@ function handleTransaccion(event) {
     };
     movimientos.push(nuevoMovimiento);
 
-    // Guardar datos
     saveUserData();
     saveMovimientos();
 
-    // Actualizar UI
     updateUserInfo();
     updateMovimientosLista();
 
-    // Limpiar formulario y cerrarlo
     montoInput.value = '';
-    closeForm('form-transaccion'); // Cerrar el formulario después de la transacción
+    closeForm('form-transaccion'); 
     alert(`Transacción de ${tipo === 'ingreso' ? 'ingreso' : 'retiro'} realizada con éxito.`);
 }
 
@@ -392,11 +356,6 @@ function handleChangePassword(event) {
     }
 }
 
-// === FUNCIONES AUXILIARES ===
-
-/**
- * Función para mostrar/ocultar formularios.
- */
 function toggleForm(formToShow, formToHide) {
     const form1 = document.getElementById(formToShow);
     const form2 = document.getElementById(formToHide);
@@ -633,33 +592,27 @@ function applySavedTheme() {
  */
 function descargarPDF() {
     const contenido = document.getElementById('extracto-contenido');
-    
-    // Verificar si jsPDF y html2canvas están disponibles
     if (typeof jspdf === 'undefined' || typeof html2canvas === 'undefined') {
         alert('Error: No se pudieron cargar las librerías necesarias para la descarga.');
         return;
     }
 
-    // Usar html2canvas para capturar el contenido
     html2canvas(contenido, {
-        scale: 2, // Mejor calidad
+        scale: 2, 
         useCORS: true,
         backgroundColor: document.body.classList.contains('modo-oscuro') ? '#032e36' : '#bcb49a'
     }).then(canvas => {
-        // Crear imagen del canvas
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
-        const imgWidth = 190; // Ancho para A4 con márgenes
-        const pageHeight = 280; // Alto A4 con márgenes
+        const imgWidth = 190; 
+        const pageHeight = 280;
         const imgHeight = canvas.height * imgWidth / canvas.width;
         let heightLeft = imgHeight;
-        let position = 10; // Margen superior
+        let position = 10; 
         
-        // Agregar primera página
         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
         
-        // Agregar páginas adicionales si es necesario
         while (heightLeft > 0) {
             position = heightLeft - imgHeight;
             pdf.addPage();
@@ -667,7 +620,6 @@ function descargarPDF() {
             heightLeft -= pageHeight;
         }
         
-        // Guardar PDF con nombre personalizado
         const fecha = new Date().toISOString().slice(0, 10);
         pdf.save(`extracto_bancafe_${fecha}.pdf`);
     }).catch(error => {
@@ -676,12 +628,10 @@ function descargarPDF() {
     });
 }
 
-// === INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO ===
 document.addEventListener('DOMContentLoaded', function() {
     initApp();
     applySavedTheme();
     
-    // Configurar botón de cambio de modo
     const toggleButton = document.getElementById('toggleModeButton');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleMode);

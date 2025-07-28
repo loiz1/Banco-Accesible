@@ -16,6 +16,7 @@
 }
 
 /* === ESTILOS GENERALES === */
+
 * {
     box-sizing: border-box;
 }
@@ -38,6 +39,7 @@ body.modo-oscuro {
 }
 
 /* === SECCIONES PRINCIPALES === */
+
 .login-section,
 .movimientos-section {
     min-height: 100vh;
@@ -45,6 +47,7 @@ body.modo-oscuro {
 }
 
 /* === LOGIN CONTENEDOR === */
+
 .login-contenedor {
     background-color: var(--color-contenedor-claro);
     min-height: 90vh;
@@ -84,6 +87,7 @@ body.modo-oscuro .login-contenedor h1 {
 }
 
 /* === IMÁGENES EN LOGIN === */
+
 .coffe1 {
     transition: transform 0.3s ease;
     width: 150px;
@@ -99,6 +103,7 @@ body.modo-oscuro .login-contenedor h1 {
 }
 
 /* === MOVIMIENTOS CONTENEDOR === */
+
 .movimientos-contenedor {
     background-color: var(--color-contenedor-claro);
     min-height: 50vh;
@@ -159,6 +164,7 @@ body.modo-oscuro .movimientos-contenedor p:not(.fw-bold) {
 }
 
 /* === IMAGEN DE DATOS === */
+
 .datos-imagen {
     position: absolute;
     top: -10px;
@@ -173,6 +179,7 @@ body.modo-oscuro .movimientos-contenedor p:not(.fw-bold) {
 }
 
 /* === OPTIONS CONTENEDOR === */
+
 .options-contenedor {
     background-color: var(--color-contenedor-claro);
     padding: 25px 20px;
@@ -212,6 +219,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === IMAGEN DE CUENTA === */
+
 .cuenta-imagen {
     position: absolute;
     width: 135px;
@@ -227,6 +235,7 @@ body.modo-oscuro .options-contenedor p {
 }
 
 /* === FORMULARIOS DESPLEGABLES === */
+
 .hidden-form {
     display: none;
     position: absolute;
@@ -276,6 +285,7 @@ body.modo-oscuro .hidden-form {
 }
 
 /* === BOTONES === */
+
 .button-group {
     display: flex;
     gap: 20px;
@@ -302,6 +312,7 @@ body.modo-oscuro .hidden-form {
 }
 
 /* Botón Secundario - Modo Claro */
+
 .btn-secundario {
     background-color: var(--color-boton-principal-oscuro);
     color: white;
@@ -323,6 +334,7 @@ body.modo-oscuro .hidden-form {
 }
 
 /* Botón Guardar */
+
 .btn-guardar {
     background-color: #4CAF50;
     color: white;
@@ -341,6 +353,7 @@ body.modo-oscuro .hidden-form {
 }
 
 /* Botón Cancelar */
+
 .btn-cancelar {
     background-color: #f44336;
     color: white;
@@ -359,6 +372,7 @@ body.modo-oscuro .hidden-form {
 }
 
 /* Botón Secundario - Modo Oscuro */
+
 body.modo-oscuro .btn-secundario {
     background-color: var(--color-boton-secundario-oscuro);
     color: #fefefeea;
@@ -385,6 +399,7 @@ body.modo-oscuro .btn-cancelar:hover {
 }
 
 /* === BOTÓN DE CAMBIO DE MODO === */
+
 .mode-toggle-floating {
     position: fixed;
     bottom: 20px;
@@ -425,7 +440,6 @@ body.modo-oscuro .btn-cancelar:hover {
     background-color: #89803f;
 }
 
-/* === MENSAJE DE BIENVENIDA Y SALDO === */
 .user-info {
     margin-top: 20px;
     font-size: 1rem;
@@ -440,7 +454,9 @@ body.modo-oscuro .btn-cancelar:hover {
     font-weight: bold;
 }
 
+
 /* === ÚLTIMOS MOVIMIENTOS DETALLADOS === */
+
 .movimientos-detalles {
     background-color: var(--color-contenedor-claro);
     padding: 1px;
@@ -487,7 +503,9 @@ body.modo-oscuro .movimientos-detalles h2 {
     color: white;
 }
 
+
 /* === FORMULARIO DE RECARGAS Y RETIROS === */
+
 .recarga-retiros {
     position: absolute;
     background-color: var(--color-contenedor-claro);
@@ -544,7 +562,6 @@ body.modo-oscuro .recarga-retiros h2 {
     margin: 10px 0;
 }
 
-/* Estilos para el contenido del extracto */
 .extracto-header {
     text-align: center;
     margin-bottom: 20px;
@@ -632,6 +649,8 @@ body.modo-oscuro .movimiento-fecha {
 .movimiento-monto.retiro {
     color: #dc3545;
 }
+
+
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 1268px) {
     .datos-imagen {
