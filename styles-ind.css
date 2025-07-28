@@ -538,6 +538,7 @@ body.modo-oscuro .recarga-retiros h2 {
 /* === EXTRACTO MODAL === */
 .extracto-info h6 {
     margin: 8px 0;
+    color: #b71c1c;
 }
 
 .extracto-info hr {
@@ -551,19 +552,15 @@ body.modo-oscuro .recarga-retiros h2 {
 }
 
 .extracto-header h3 {
-    color: #80650c;
+    color: #0e0e0e;
     margin-bottom: 5px;
 }
 
 .extracto-summary {
-    background-color: rgba(202, 186, 128, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-}
-
-body.modo-oscuro .extracto-summary {
-    background-color: rgba(5, 158, 169, 0.3);
 }
 
 .extracto-movimientos {
@@ -578,7 +575,7 @@ body.modo-oscuro .extracto-summary {
 }
 
 body.modo-oscuro .extracto-movimientos h4 {
-    color: #04363c;
+    color: #efefef;
     border-bottom: 1px solid #026f7d;
 }
 
@@ -614,7 +611,7 @@ body.modo-oscuro .movimiento-item {
 
 .movimiento-fecha {
     font-size: 0.85rem;
-    color: #666;
+    color: #ffffff;
 }
 
 body.modo-oscuro .movimiento-fecha {
@@ -706,7 +703,7 @@ body.modo-oscuro .movimiento-fecha {
         width: 90px;
         margin: 15px auto 0;
         display: block;
-        right: 15px;
+        right: 5px;
         bottom: 190px;
     }
     
